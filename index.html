@@ -6,7 +6,7 @@
     <meta name="description" content="Minimal Secure Password Generator" />
     <meta name="keywords" content="Minimal Secure Password Generator" />
     <meta name="author" content="Zuri#0001" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <style>
 
@@ -25,11 +25,11 @@
 
       #passwords {
         width: 100%;
-        height: 80%;
+        height: 75%;
         padding: 10px;
         text-align: center;
         resize: none;
-        border: 1px solid #ccc;
+        border: none;
         background: rgb(14, 14, 14);
       }
 
@@ -38,6 +38,7 @@
         background:rgb(14, 14, 14);
         color:rgb(255, 255, 255);
         border: 1px solid #fff;
+        text-align: center;
       }
 
       input::-webkit-outer-spin-button,
@@ -63,8 +64,8 @@
         <label for="length">Password Length</label>
         <input type="number" name="length" id="length" value="32"/>
         <label for="count">Password Count</label>
-        <input type="number" name="count" id="count" value="25" />
-		<br>
+        <input type="number" name="count" id="count" value="20" />
+        <br>
         <input type="checkbox" name="uppercase" id="uppercase" checked />
         <label for="uppercase">Uppercase</label>
         <input type="checkbox" name="lowercase" id="lowercase" checked />
@@ -73,13 +74,13 @@
         <label for="numbers">Numbers</label>
         <input type="checkbox" name="symbols" id="symbols" checked />
         <label for="symbols">Symbols</label>
-
+        <br>
         <input
           type="button"
           name="generate"
           id="generate"
           value="Generate"
-          style="border: 1px solid #fff; background: none; color: #fff;"
+          style="border: 1px solid #fff; background: none; color: #fff; margin-top: 10px;"
           onclick="generatePasswords();"
         />
       </div>
