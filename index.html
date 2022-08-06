@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Minimal Secure Password Generator" />
-    <meta name="keywords" content="Minimal Secure Password Generator" />
+    <meta name="keywords" content="i suck at front-end lul" />
     <meta name="author" content="Zuri#0001" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
@@ -44,6 +44,7 @@
       input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
         -webkit-appearance: none;
+		-moz-appearance: none;
         margin: 0;
       }
 
@@ -62,9 +63,9 @@
     <div style="text-align: center">
       <div id="config" style="padding: 10px">
         <label for="length">Password Length</label>
-        <input type="number" name="length" id="length" value="32"/>
+        <input type="number" name="length" id="length" value="32" min="5" max="50"/>
         <label for="count">Password Count</label>
-        <input type="number" name="count" id="count" value="20" />
+        <input type="number" name="count" id="count" value="20" min="1" max="40"/>
         <br>
         <input type="checkbox" name="uppercase" id="uppercase" checked />
         <label for="uppercase">Uppercase</label>
@@ -84,14 +85,14 @@
           onclick="generatePasswords();"
         />
       </div>
-      <textarea id="passwords" spellcheck="false"></textarea>
+      <textarea id="passwords" spellcheck="false" readonly="readonly"></textarea>
       <p>Made by Zuri#0001 with ❤️ <span style="color:#888">(and foxes, cause foxes are cool)</span> <span style="color:#333">(and so are bowties and fezzes)</span></p>
     </div>
     <script>
       const chars = {
         lowercase: "abcdefghijklmnopqrstuvwxyz",
         uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        special: "!#=^+;&)_[.(%~]@-{},'$",
+        special: "!@#$%^&*()_+-=[]\\;',./{}|:\"<>?",
         number: "0123456789",
       };
       const generatePasswords = () => {
@@ -101,7 +102,12 @@
         document.querySelector("#numbers").checked && (currentChars += chars.number);
         document.querySelector("#symbols").checked && (currentChars += chars.special);
 
+		!document.querySelector("#uppercase").checked && !document.querySelector("#lowercase").checked && !document.querySelector("#numbers").checked && !document.querySelector("#symbols").checked && (window.location = "https://www.youtube.com/watch?v=zgNuHWFCDqw")
+
         let passwordLength = document.querySelector("#length").value;
+		passwordLength > 50 && (document.querySelector("#length").value = 50);
+		passwordLength < 5 && (document.querySelector("#length").value = 5);
+
             passwordLength < 8 ? (document.querySelector("#passwords").style.color = "#ffb3ba")
           : passwordLength < 12 ? (document.querySelector("#passwords").style.color = "#ffdfba")
           : passwordLength < 16 ? (document.querySelector("#passwords").style.color = "#ffffba")
